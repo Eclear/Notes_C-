@@ -72,4 +72,7 @@ bool型默认值为false
   
 string型默认值为空字符串  
   
-char 型比较特殊。char类型默认值为'\0'， 即字符串结束标志，其整数值为0。如果用printf("%d")输出时值为 0， 但用printf("%c"),或cout 输出时显示为"a"， char型数组默认值为空字符串，其中的每个元素与单个char类型相同，所以用puts() 和printf("%s") 输出都是空字符串。  
+char 型比较特殊。char类型默认值为'\0'， 即字符串结束标志，其整数值为0。如果用printf("%d")输出时值为 0， 但用printf("%c"),或cout 输出时显示为"a"， char型数组默认值为空字符串，其中的每个元素与单个char类型相同，所以用puts() 和printf("%s") 输出都是空字符串。  
+## new运算符只是申请分配一个内存空间而已
+int *pia = new int[10];    // 10个未初始化int
+int *pia2 = new int[10](); // 10个值初始化为0的int

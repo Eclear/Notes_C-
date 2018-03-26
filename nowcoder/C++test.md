@@ -98,3 +98,31 @@ int *pia2 = new int[10](); // 10个值初始化为0的int
 ## 17sprintf()函数  
 向字符串中打印。  
 例子：字符串ABABA，此时 p1 指向 A BABA，p2 指向 ABABA ； sprintf 重定向修改 ABABA ， B 变为 1 ，且跟随一个 ‘\0’ （该函数自动产生的） , 此时，字符串变为 A1‘\0’BA 。
+## 18auto关键字
+C++11 auto  
+auto可以在声明变量的时候根据变量初始值的类型自动为此变量选择匹配的类型，类似的关键字还有decltype。举个例子：  
+```
+#include<string>
+#include<vector>
+int main()
+{
+    std::vector<std::string> vs;
+    for (std::vector<std::string>::iterator i = vs.begin(); i != vs.end(); i++)
+    {
+        //...
+    }
+}
+```
+可替换成：  
+```
+#include<string>
+#include<vector>
+int main()
+{
+    std::vector<std::string> vs;
+    for (auto i = vs.begin(); i != vs.end(); i++)
+    {
+        //..
+    }
+}
+```

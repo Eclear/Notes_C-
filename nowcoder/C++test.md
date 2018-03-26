@@ -101,7 +101,54 @@ int *pia2 = new int[10](); // 10个值初始化为0的int
    * 有效对齐要求数据成员存放的地址值能被有效对齐值整除，即：地址值%有效对齐值=0
 ## 关于继承中的函数重写
 父类指针指向子类实例对象，调用普通重写方法时，会调用父类中的方法。而调用被子类重写虚函数时，会调用子类中的方法。  
-再次说明了，子类中被重写的虚函数的运行方式是动态绑定的，与当前指向类实例的父类指针类型无关，仅和类实例对象本身有关。  
+再次说明了，子类中被重写的虚函数的运行方式是动态绑定的，与当前指向类实例的父类指针类型无关，仅和类实例对象本身有关。  
+例：  
+```
+class A
+{
+public:
+ void FuncA()
+ {
+     printf( "FuncA called\n" );
+ }
+ virtual void FuncB()
+ {
+     printf( "FuncB called\n" );
+ }
+};
+class B : public A
+{
+public:
+ void FuncA()
+ {
+     A::FuncA();
+     printf( "FuncAB called\n" );
+ }
+ virtual void FuncB()
+ {
+     printf( "FuncBB called\n" );
+ }
+};
+void main( void )
+{
+ B  b;
+ A  *pa;
+ pa = &b;
+ A *pa2 = new A;
+ pa->FuncA(); （ 3）
+ pa->FuncB(); （ 4）
+ pa2->FuncA(); （ 5）
+ pa2->FuncB();
+ delete pa2;
+}
+```
+输出结果：
+```
+FuncA called
+FuncBB called
+FuncA called
+FuncB called
+```
 ## 17sprintf()函数  
 向字符串中打印。  
 例子：字符串ABABA，此时 p1 指向 A BABA，p2 指向 ABABA ； sprintf 重定向修改 ABABA ， B 变为 1 ，且跟随一个 ‘\0’ （该函数自动产生的） , 此时，字符串变为 A1‘\0’BA 。

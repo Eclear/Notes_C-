@@ -2,9 +2,17 @@
 ## set  
 跟vector的唯一区别就是，set里面的元素是有序的且唯一的，只要你往set里添加元素，它就会自动排序，而且，如果你添加的元素set里面本来就存在，
 那么这次添加操作就不执行。  
->set不能直接cout或下标遍历，遍历需要用iterator
+* set不能直接cout或下标遍历，遍历需要用iterator
+  ```
+  set<int>::iterator ite1 = iset.begin();
+  set<int>::iterator ite2 = iset.end();
+  for(;ite1!=ite2;ite1++)
+  {
+      cout<<*ite1;
+  }
+  ```
 
-set的各成员函数列表如下:
+* set的各成员函数列表如下:
 
 1. begin()--返回指向第一个元素的迭代器
 

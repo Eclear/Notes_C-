@@ -71,11 +71,14 @@
     `ite1 = m_map.begin(); ite1->first;`    
 * 插入数据：
 1. 用insert函数插入pair数据  
-
-`mapStudent.insert(pair<int, string>(3, "student_three")); `  
+```
+mapStudent.insert(pair<int, string>(3, "student_three")); 
+```  
 2. 用insert函数插入value_type数据  
-
-`mapStudent.insert(map<int, string>::value_type (1, "student_one")); `
+```
+mapStudent.insert(map<int, string>::value_type (1, "student_one")); 
+```
 3. 用数组方式插入数据  
-
-`mapStudent[1] = "student_one"; `  
+```
+mapStudent[1] = "student_one"; 
+```  

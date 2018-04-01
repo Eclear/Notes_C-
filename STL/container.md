@@ -81,4 +81,7 @@ mapStudent.insert(map<int, string>::value_type (1, "student_one"));
 3. 用数组方式插入数据  
 ```
 mapStudent[1] = "student_one"; 
-```  
+```  
+
+## 堆(heap)
+STL中并没有把heap作为一种容器组件，heap的实现亦需要更低一层的容器组件（诸如list,array,vector）作为其底层机制。Heap是一个类属算法，包含在algorithm头文件中。虽然STL中关于heap默认调整成的是大顶堆，但却可以让用户利用自定义的compare_fuction函数实现大顶堆或小顶堆。heap的低层机制vector本身就是一个类模板，heap基于vector便实现了对各种数据类型（无论基本数据类型还是用户自定义的数据类型）的堆排（前提是用户自定义的数据类型要提供比较机制compare_fuction函数）。

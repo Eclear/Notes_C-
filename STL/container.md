@@ -81,7 +81,29 @@ mapStudent.insert(map<int, string>::value_type (1, "student_one"));
 3. 用数组方式插入数据  
 ```
 mapStudent[1] = "student_one"; 
-```  
+```
 
 ## 堆(heap)
-STL中并没有把heap作为一种容器组件，heap的实现亦需要更低一层的容器组件（诸如list,array,vector）作为其底层机制。Heap是一个类属算法，包含在algorithm头文件中。虽然STL中关于heap默认调整成的是大顶堆，但却可以让用户利用自定义的compare_fuction函数实现大顶堆或小顶堆。heap的低层机制vector本身就是一个类模板，heap基于vector便实现了对各种数据类型（无论基本数据类型还是用户自定义的数据类型）的堆排（前提是用户自定义的数据类型要提供比较机制compare_fuction函数）。
+STL中并没有把heap作为一种容器组件，heap的实现亦需要更低一层的容器组件（诸如list,array,vector）作为其底层机制。Heap是一个类属算法，包含在algorithm头文件中。虽然STL中关于heap默认调整成的是大顶堆，但却可以让用户利用自定义的compare_fuction函数实现大顶堆或小顶堆。heap的低层机制vector本身就是一个类模板，heap基于vector便实现了对各种数据类型（无论基本数据类型还是用户自定义的数据类型）的堆排（前提是用户自定义的数据类型要提供比较机制compare_fuction函数）。  
+STL里面的堆操作一般用到的只有4个
+### make_heap()
+  * 函数原型：void make_heap(first_pointer,end_pointer,compare_function);  
+    一个参数是数组或向量的头指针，第二个向量是尾指针。第三个参数是比较函数的名字。在缺省的时候，默认是大跟堆。  
+  * 作用：把这一段的数组或向量做成一个堆的结构。范围是(first,last)
+  * 如果想
+### pop_heap()
+  * 函数原型：void pop_heap(first_pointer,end_pointer,compare_function);  
+  * 作用：pop_heap()不是真的把最大（最小）的元素从堆中弹出来。而是重新排序堆。它把first和last交换，然后将\[first,last-1)的数据再做成一个堆。
+### push_heap()
+  * void pushheap(first_pointer,end_pointer,compare_function);
+  * 作用：push_heap()假设由\[first,last-1)是一个有效的堆，然后，再把堆中的新元素加进来，做成一个堆。
+### sort_heap()
+  * void sort_heap(first_pointer,end_pointer,compare_function);
+  * 作用是sort_heap对\[first,last)中的序列进行排序。它假设这个序列是有效堆。（当然，经过排序之后就不是一个有效堆了）
+### C++用法
+  * [在vector上建堆](https://blog.csdn.net/mytzs123/article/details/76099380)  
+    注意：push_heap()用法是，vector先push_back()，后push_heap()：  
+    pop_heap()用法是，先pop_heap()，vector后pop_back()：  
+    构建最大堆：make_heap(nums.begin(), nums.end(), less<int>());  
+    构建最小堆：make_heap(nums.begin(), nums.end(), greater<int>());  
+  * [在数组上建堆](https://blog.csdn.net/zsc2014030403015/article/details/45872737)

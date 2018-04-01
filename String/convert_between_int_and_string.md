@@ -1,4 +1,17 @@
 # C++整形、字符串互转
+## C++11 to_string()
+```
+#include <iostream>
+#include <string>
+
+int main()
+{
+    double f = 23.43;
+    std::string f_str = std::to_string(f);
+    std::cout << f_str << '\n';
+}
+```
+## 使用sstream(stringstream)
 ```
 #include <iostream>
 #include <sstream>

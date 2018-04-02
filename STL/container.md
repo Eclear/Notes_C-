@@ -1,4 +1,19 @@
 # C++ STL -- container  
+## stack
+* stack的成员函数
+  * size()	返回栈的元素数	O(1)  
+  * top()	返回栈顶的元素	O(1)  
+  * pop()	从栈中取出并删除元素	O(1)  
+  * push(x)	向栈中添加元素x	O(1)  
+  * empty()	在栈为空时返回true	O(1)  
+```
+#include<stack>
+...
+stack<int> m_stack;
+m_stack.push(10);
+cout <<m_stack.top();
+m_stack.pop();
+```
 ## set  
 跟vector的唯一区别就是，set里面的元素是有序的且唯一的，只要你往set里添加元素，它就会自动排序，而且，如果你添加的元素set里面本来就存在，
 那么这次添加操作就不执行。  
